@@ -55,5 +55,21 @@ select name, gnpold from country
 #null operations
 select null+3, 4-null, null*pi(), 3/NULL, sqrt(null), 3/0, sqrt(-2), log(-1);
 
+#ifnull
+ select name, gnp, ifnull(gnpold,"there was null") "ifnull working",
+    gnp*gnpold from country
+    where name like"P%";
 
+# ----------------- ex-s with ifnull ---------------------
+
+#change null to 0
+ select name, gnp, ifnull(gnpold,0) "gnpold",
+ifnull(gnp*gnpold,0) "gnp*gnpold" from country
+where name like "P%";
+
+#same ex
+#change * to +
+select name, gnp, ifnull(gnpold,0) "gnpold",
+ ifnull(gnp+gnpold,gnp) "gnp+gnpold" from country
+ where name like "P%";
 
