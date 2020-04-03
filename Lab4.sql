@@ -137,3 +137,32 @@ select concat("W kraju ",name," panuje ",headofstate,".") "kraj-glowa"
  name like "p%"
  order by headofstate;
 
+#string opers
+
+select LEFT("Ala ma kota.",5);
+
+select RIGHT("Ala ma kota.",3);
+
+select lower("abC DefG HiJkLm O");
+
+select length("Ala ma kota.");
+
+insert test (imie, kiedy, zamawia, czas) value(" alA", now(), now(), now()),("eWa ", now(), now(), now()),(" leNa ", now(), now(), now());
+
+select imie from test;
+
+#firs letter to upper
+select concat(upper(left(imie,1)),lower(right(imie,length(imie)-1))) imie from test;
+
+#trim
+select ltrim("  Ala   ma  kota.   ") napis;
+
+select concat(upper(left(ltrim(imie),1)),lower(right(imie,length(ltrim(imie))-1)))
+imie from test;
+
+#if
+select if(2+4=6,"g00d","wrong");
+
+#woman  / man
+select imie, if(right(trim(imie),1)="a","kobieta","facet") sex from test;
+
