@@ -73,3 +73,17 @@ select name, gnp, ifnull(gnpold,0) "gnpold",
  ifnull(gnp+gnpold,gnp) "gnp+gnpold" from country
  where name like "P%";
 
+#-------DATA TIME--------------
+
+#test table
+create table test
+(
+imie varchar(12) not null,
+kiedy date, #date column
+zamawia datetime, #datetime column
+czas time, #time column
+zwrot timestamp #can be autofilled
+);
+
+desc test;
+
