@@ -87,3 +87,53 @@ zwrot timestamp #can be autofilled
 
 desc test;
 
+ insert test values
+("Jan","1975:07:23","2007.05.30 21-12-56","12:43:55","1999:04:20 11-12-13");
+
+select * from test;
+
+select CURRENT_DATE() "1", CURRENT_TIME() "2", #basic
+DATE_FORMAT(current_date(), "%w<-->%M~~-~~%Y..:.:.:..%d") "3", #imagination
+TIME_FORMAT(current_time(), "%H |_| %i \\?/ %s <---> %p") "4";
+
+#https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html
+
+#gettin time
+ select year(now()), month(now()), day(now()), hour(now()), second(now());
+
+#some data
+insert test (imie, kiedy, zamawia, czas) value
+ ("Ewa","1975-07-23","2007.05.30 21-12-56","12:43:55"),
+ ("Ola",now(),now(),now()),
+ ("Iza","2012-12.12","2000,12-12 12-1:2","0:3:07");
+
+select * from test;
+
+select imie, year(now()) - year(kiedy) wiek
+ from test;
+
+select imie, year(now()) - year(kiedy) wiek
+     from test
+     where year(kiedy) > 0
+     order by czas desc;
+
+#show country and headofstate and average life expectancy
+
+select CONCAT(name, headofstate) 'kraj-glowa', lifeexpectancy zycie
+    from country
+    where
+    name like "p%"
+    order by 2 desc;
+
+select CONCAT(name, " --> ",headofstate) "kraj-glowa", lifeexpectancy zycie
+from country
+where
+name like "p%"
+order by headofstate;
+
+select concat("W kraju ",name," panuje ",headofstate,".") "kraj-glowa"
+ from country
+ where
+ name like "p%"
+ order by headofstate;
+
